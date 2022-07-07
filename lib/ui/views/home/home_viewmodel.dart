@@ -5,9 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
 class HomeViewModel extends BaseViewModel {
-  void getData() {
+  String _name = "";
+  String get name => _name;
+  Future<void> getData() async {
     final client = ApiClient(Dio(BaseOptions(contentType: "application/json")));
-    Future<ResponseData> posts = client.getUsers();
+    ResponseData? posts = await client.getUsers();
     debugPrint("responce = $posts");
+    // _name = posts.;
   }
 }
